@@ -1,0 +1,28 @@
+%{
+#include<stdio.h>
+int lc=0, sc=0, ch=0, w=0;
+%}
+
+%%
+[a-zA-Z0-9]    {ch++;}
+\n {lc++;w++;}
+[ ] {sc++;w++;}
+.    {ch++;}
+
+%%
+
+int main()
+{
+        printf("input data:");
+        yylex();
+        printf("\nNo. of lines=%d", lc);
+        printf("\nNo. of spaces=%d", sc);
+        printf("\nNo. of word=%d",w);
+        printf("\nNo. of other characters=%d", ch);
+return 0;
+}
+int yywrap()
+{
+return -1;
+}
+
